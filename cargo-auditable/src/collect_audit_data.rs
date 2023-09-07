@@ -72,6 +72,7 @@ fn get_metadata(args: &RustcArgs, target_triple: &str) -> Metadata {
     // https://doc.rust-lang.org/stable/std/env/fn.remove_var.html
     let mut metadata_command = metadata_command.cargo_command();
     metadata_command.env_remove("RUSTC_WORKSPACE_WRAPPER");
+    println!("[ereslibre] executing command: {:?}", metadata_command);
     let output = metadata_command.output().unwrap();
     if !output.status.success() {
         panic!(
